@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "PIDE Resume Analyzer",
+    "slug": "pide-resume-analyzer",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#00843D"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "gov.pide.resumeanalyzer"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#00843D"
+      },
+      "package": "gov.pide.resumeanalyzer"
+    },
+    "web": {}
+  }
+}
