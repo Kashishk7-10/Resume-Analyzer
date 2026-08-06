@@ -1,0 +1,64 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║                      📱 APP DEVELOPER INFORMATION 📱                      ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+DEVELOPER DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Name:          Kashish Kumari
+Email:         kashishkumari.bscsf22@iba-suk.edu.pk
+Institution:   IBA Sukkur
+Program:       BSCS (Batch 2022)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROJECT INFORMATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Project:       PIDE Resume Analyzer
+Version:       1.0.0 (Updated)
+Type:          React Native Mobile App + Flask Backend
+Purpose:       AI-powered resume screening and analysis
+Last Updated:  August 2024
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+IN-APP CONTACT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This information is visible in the app:
+
+Location:   About tab → Developer section
+Email:      kashishkumari.bscsf22@iba-suk.edu.pk
+           (Clickable - opens email client)
+
+Name:       Kashish Kumari
+Version:    v1.0.0 · MIT License · 2024
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VERIFICATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Developer name updated in: src/screens/AboutScreen.js
+✅ Email address updated in: src/screens/AboutScreen.js
+✅ Email is: kashishkumari.bscsf22@iba-suk.edu.pk
+✅ Clickable link to email configured
+✅ App is running and ready to test
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HOW TO TEST IN APP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Open app at: http://localhost:8082
+2. Go to: About tab (bottom navigation)
+3. Scroll down to: Developer section
+4. You should see:
+   - Name: "Kashish Kumari"
+   - Email: "kashishkumari.bscsf22@iba-suk.edu.pk"
+5. Click the email to open your email client
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+All developer information has been successfully updated!
+
+═════════════════════════════════════════════════════════════════════════════

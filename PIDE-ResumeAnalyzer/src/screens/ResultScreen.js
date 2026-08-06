@@ -36,7 +36,7 @@ const RESULT_CONFIG = {
     icon: '❌',
     headline: 'Not Recommended',
     description:
-      'This candidate's profile does not sufficiently match the job requirements based on the provided texts.',
+      "This candidate's profile does not sufficiently match the job requirements based on the provided texts.",
     recommendation: 'Not recommended at this time',
     recommendationColor: COLORS.noFit,
   },
@@ -173,12 +173,8 @@ export default function ResultScreen({ route, navigation }) {
             </Text>
           </View>
           <View style={styles.summaryRow}>
-            <Text style={styles.summaryKey}>Model:</Text>
-            <Text style={styles.summaryVal}>Random Forest Classifier</Text>
-          </View>
-          <View style={styles.summaryRow}>
-            <Text style={styles.summaryKey}>Model accuracy:</Text>
-            <Text style={styles.summaryVal}>85% on test set</Text>
+            <Text style={styles.summaryKey}>Algorithm:</Text>
+            <Text style={styles.summaryVal}>Machine Learning Classifier</Text>
           </View>
         </View>
 

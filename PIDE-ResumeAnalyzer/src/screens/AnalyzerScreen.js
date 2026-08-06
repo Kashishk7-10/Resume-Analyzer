@@ -28,17 +28,26 @@ export default function AnalyzerScreen({ navigation }) {
   const handlePickDocument = async (type) => {
     try {
       const result = await DocumentPicker.getDocumentAsync({
-        type: ['text/plain'],
+        type: ['text/plain', 'application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
         copyToCacheDirectory: true,
       });
 
       if (!result.canceled && result.assets && result.assets.length > 0) {
         const asset = result.assets[0];
-        const content = await FileSystem.readAsStringAsync(asset.uri);
-        if (type === 'resume') {
-          setResumeText(content);
-        } else {
-          setJobDescText(content);
+        const { parseFile, validateFileSize } = await import('../services/fileParserService');
+        
+        try {
+          validateFileSize(asset.size || 0);
+          const content = await parseFile(asset.uri, asset.mimeType || '');
+          
+          if (type === 'resume') {
+            setResumeText(content);
+          } else {
+            setJobDescText(content);
+          }
+          Alert.alert('Success', `${asset.name} loaded successfully!`);
+        } catch (parseError) {
+          Alert.alert('Parse Error', parseError.message || 'Could not parse the file. Please try another file or paste manually.');
         }
       }
     } catch (error) {
@@ -168,7 +177,7 @@ export default function AnalyzerScreen({ navigation }) {
                 style={styles.uploadButton}
                 onPress={() => handlePickDocument('resume')}
               >
-                <Text style={styles.uploadButtonText}>📎 Upload .txt File</Text>
+                <Text style={styles.uploadButtonText}>📎 Upload Resume (TXT, PDF, DOC)</Text>
               </TouchableOpacity>
 
               <View style={styles.orRow}>
@@ -208,7 +217,7 @@ export default function AnalyzerScreen({ navigation }) {
                 style={styles.uploadButton}
                 onPress={() => handlePickDocument('job')}
               >
-                <Text style={styles.uploadButtonText}>📎 Upload .txt File</Text>
+                <Text style={styles.uploadButtonText}>📎 Upload Job Description (TXT, PDF, DOC)</Text>
               </TouchableOpacity>
 
               <View style={styles.orRow}>
@@ -288,7 +297,7 @@ export default function AnalyzerScreen({ navigation }) {
           <Text style={styles.tipsTitle}>💡 Tips for Best Results</Text>
           <Text style={styles.tipItem}>• Use the full resume text, not a summary</Text>
           <Text style={styles.tipItem}>• Include the complete job description with requirements</Text>
-          <Text style={styles.tipItem}>• .txt format gives the most accurate results</Text>
+          <Text style={styles.tipItem}>• Supported formats: TXT, PDF, DOC, DOCX</Text>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
