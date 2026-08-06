@@ -14,16 +14,15 @@ export default function AboutScreen() {
     { name: 'React Native (Expo)', role: 'Mobile App Framework' },
     { name: 'Python / Flask', role: 'Backend API' },
     { name: 'Scikit-learn', role: 'ML Library' },
-    { name: 'Random Forest', role: 'Classification Algorithm' },
     { name: 'Pandas / NumPy', role: 'Data Processing' },
     { name: 'NLTK', role: 'Text Preprocessing' },
   ];
 
   const metrics = [
-    { label: 'Overall Accuracy', value: '85%' },
-    { label: 'Training Samples', value: '8,000+' },
-    { label: 'Classes', value: '3' },
-    { label: 'Dataset Source', value: 'Hugging Face' },
+    { label: 'Framework', value: 'Machine Learning' },
+    { label: 'Backend', value: 'Flask API' },
+    { label: 'Categories', value: '3 Fit Levels' },
+    { label: 'Data Processing', value: 'NLTK + TF-IDF' },
   ];
 
   return (
@@ -84,22 +83,10 @@ export default function AboutScreen() {
 
         {/* Dataset */}
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Training Dataset</Text>
+          <Text style={styles.cardTitle}>Technology Overview</Text>
           <Text style={styles.bodyText}>
-            Trained on the{' '}
-            <Text style={styles.link}>Resume-Job Description Fit Dataset</Text> from Hugging
-            Face, containing 8,000+ labeled resume-job description pairs.
+            This application uses advanced natural language processing and machine learning to classify resumes based on job description fit. The model analyzes text features and semantic similarity to provide intelligent screening recommendations.
           </Text>
-          <TouchableOpacity
-            onPress={() =>
-              Linking.openURL(
-                'https://huggingface.co/datasets/cnamuangtoun/resume-job-description-fit'
-              )
-            }
-            style={styles.linkButton}
-          >
-            <Text style={styles.linkButtonText}>🔗 View Dataset on Hugging Face</Text>
-          </TouchableOpacity>
         </View>
 
         {/* Disclaimer */}
@@ -115,15 +102,15 @@ export default function AboutScreen() {
         {/* Contact */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Developer</Text>
-          <Text style={styles.bodyText}>Ghulam Muttaqa Shah</Text>
+          <Text style={styles.bodyText}>Kashish Kumari</Text>
           <TouchableOpacity
-            onPress={() => Linking.openURL('mailto:ghulammuttaqashah@gmail.com')}
+            onPress={() => Linking.openURL('mailto:kashishkumari.bscsf22@iba-suk.edu.pk')}
           >
-            <Text style={styles.emailLink}>ghulammuttaqashah@gmail.com</Text>
+            <Text style={styles.emailLink}>kashishkumari.bscsf22@iba-suk.edu.pk</Text>
           </TouchableOpacity>
         </View>
 
-        <Text style={styles.version}>v1.0.0 · MIT License · 2024</Text>
+        <Text style={styles.version}>v1.0.0 · MIT License · 2026</Text>
       </View>
     </ScrollView>
   );

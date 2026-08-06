@@ -155,4 +155,4 @@ If the `model/` directory is missing or empty, the API automatically falls back 
 
 ## License
 
-MIT License © 2024 PIDE
+MIT License © 2026 PIDE

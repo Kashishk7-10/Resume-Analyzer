@@ -14,12 +14,12 @@ export default function HomeScreen({ navigation }) {
     {
       icon: '📄',
       title: 'Resume Matching',
-      description: 'Upload a resume and job description to instantly assess candidate suitability.',
+      description: 'Upload a resume and job description to assess candidate suitability.',
     },
     {
       icon: '🤖',
-      title: 'AI-Powered',
-      description: 'Random Forest model trained on 8,000+ resume-job pairs with 85% accuracy.',
+      title: 'AI-Powered Analysis',
+      description: 'Advanced machine learning model for intelligent resume screening.',
     },
     {
       icon: '⚡',
@@ -60,16 +60,16 @@ export default function HomeScreen({ navigation }) {
       {/* Stats Row */}
       <View style={styles.statsRow}>
         <View style={styles.statCard}>
-          <Text style={styles.statNumber}>85%</Text>
-          <Text style={styles.statLabel}>Accuracy</Text>
+          <Text style={styles.statNumber}>✓</Text>
+          <Text style={styles.statLabel}>Accurate</Text>
         </View>
         <View style={[styles.statCard, styles.statCardMiddle]}>
-          <Text style={styles.statNumber}>8K+</Text>
-          <Text style={styles.statLabel}>Trained Samples</Text>
+          <Text style={styles.statNumber}>⚡</Text>
+          <Text style={styles.statLabel}>Fast</Text>
         </View>
         <View style={styles.statCard}>
-          <Text style={styles.statNumber}>3</Text>
-          <Text style={styles.statLabel}>Fit Categories</Text>
+          <Text style={styles.statNumber}>📊</Text>
+          <Text style={styles.statLabel}>Detailed</Text>
         </View>
       </View>
 
@@ -111,7 +111,7 @@ export default function HomeScreen({ navigation }) {
       </View>
 
       <View style={styles.footer}>
-        <Text style={styles.footerText}>© 2024 PIDE — AI-Assisted Recruitment Tool</Text>
+        <Text style={styles.footerText}>© 2026 PIDE — AI-Assisted Recruitment Tool</Text>
       </View>
     </ScrollView>
   );
