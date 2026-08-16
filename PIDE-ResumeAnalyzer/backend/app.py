@@ -1,6 +1,7 @@
 """
 PIDE Resume Analyzer - Flask Backend API
 Serves the trained Random Forest model for resume classification.
+Includes advanced matching and scoring engine.
 """
 
 from flask import Flask, request, jsonify
@@ -10,12 +11,16 @@ import os
 import re
 import string
 import logging
+from typing import Dict, List
 
 import numpy as np
 import nltk
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.sparse import hstack
+
+# Import matching engine
+from matching_engine import HybridScorer, CandidateRanker
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -37,6 +42,12 @@ except LookupError:
 # ---------------------------------------------------------------------------
 app = Flask(__name__)
 CORS(app)  # allow cross-origin requests from the mobile app
+
+# ---------------------------------------------------------------------------
+# Initialize matching engine
+# ---------------------------------------------------------------------------
+hybrid_scorer = HybridScorer()
+candidate_ranker = CandidateRanker()
 
 # ---------------------------------------------------------------------------
 # Model paths  (adjust if your files are elsewhere)
@@ -135,11 +146,19 @@ def health():
         'status': 'ok',
         'model_loaded': model is not None,
         'service': 'PIDE Resume Analyzer API',
+        'version': '1.0.0',
+        'features': {
+            'hybrid_scoring': True,
+            'keyword_matching': True,
+            'semantic_matching': True,
+            'candidate_ranking': True
+        }
     })
 
 
 @app.route('/analyze', methods=['POST'])
 def analyze():
+    """Classic resume-to-job analysis endpoint"""
     data = request.get_json(force=True)
 
     resume_text = data.get('resume_text', '').strip()
@@ -179,7 +198,6 @@ def analyze():
             label = label_encoder.inverse_transform([pred_idx])[0]
             classes = label_encoder.classes_
         else:
-            # Assume classes are stored in model.classes_
             classes = model.classes_
             label = str(classes[pred_idx]) if not isinstance(pred_idx, str) else pred_idx
 
@@ -198,6 +216,83 @@ def analyze():
     except Exception as e:
         logger.error(f"Prediction error: {e}", exc_info=True)
         return jsonify({'error': 'Internal server error during prediction.'}), 500
+
+
+@app.route('/analyze/hybrid', methods=['POST'])
+def analyze_hybrid():
+    """Advanced hybrid matching endpoint"""
+    data = request.get_json(force=True)
+
+    resume_text = data.get('resume_text', '').strip()
+    job_requirements = data.get('requirements', {})
+    job_full_text = data.get('job_description_text', '').strip()
+    weights = data.get('weights', {'keyword': 0.4, 'semantic': 0.6})
+
+    # Validation
+    if not resume_text:
+        return jsonify({'error': 'resume_text is required'}), 400
+    if not job_requirements:
+        return jsonify({'error': 'requirements dict is required'}), 400
+    if not job_full_text:
+        return jsonify({'error': 'job_description_text is required'}), 400
+
+    try:
+        # Calculate hybrid score
+        result = hybrid_scorer.calculate_hybrid_score(
+            resume_text,
+            job_requirements,
+            job_full_text,
+            weights
+        )
+
+        return jsonify({
+            'success': True,
+            'hybrid_score': result['hybrid_score'],
+            'keyword_score': result['keyword_score'],
+            'semantic_score': result['semantic_score'],
+            'interpretation': result['interpretation'],
+            'weights_used': result['weights'],
+            'confidence': result['confidence']
+        })
+
+    except Exception as e:
+        logger.error(f"Hybrid analysis error: {e}", exc_info=True)
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/rank-candidates', methods=['POST'])
+def rank_candidates():
+    """Rank multiple candidates against a job posting"""
+    data = request.get_json(force=True)
+
+    candidates = data.get('candidates', [])
+    job_posting = data.get('job_posting', {})
+    weights = data.get('weights', None)
+
+    # Validation
+    if not candidates:
+        return jsonify({'error': 'candidates list is required'}), 400
+    if not job_posting:
+        return jsonify({'error': 'job_posting is required'}), 400
+
+    try:
+        # Rank candidates
+        ranked = candidate_ranker.rank_candidates(
+            candidates,
+            job_posting,
+            weights
+        )
+
+        return jsonify({
+            'success': True,
+            'job_posting': job_posting.get('title', 'Unknown'),
+            'total_candidates': len(ranked),
+            'ranked_list': ranked
+        })
+
+    except Exception as e:
+        logger.error(f"Ranking error: {e}", exc_info=True)
+        return jsonify({'error': str(e)}), 500
 
 
 # ---------------------------------------------------------------------------
