@@ -35,46 +35,70 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      {/* Header with PIDE Logo */}
+      <View style={styles.header}>
+        <View style={styles.logoBox}>
+          <Text style={styles.logoEmoji}>🏛️</Text>
+        </View>
+        <View>
+          <Text style={styles.pideTitle}>PIDE</Text>
+          <Text style={styles.pideSubtitle}>Pakistan Institute</Text>
+        </View>
+      </View>
+
       {/* Hero Section */}
       <View style={styles.hero}>
-        <View style={styles.logoContainer}>
-          <Text style={styles.logoIcon}>🏛️</Text>
-        </View>
-        <Text style={styles.orgName}>PIDE</Text>
-        <Text style={styles.orgFullName}>Pakistan Institute of Development Economics</Text>
-        <View style={styles.divider} />
-        <Text style={styles.heroTitle}>AI Resume Analyzer</Text>
+        <Text style={styles.heroTitle}>Career Portal</Text>
         <Text style={styles.heroSubtitle}>
-          Streamline your hiring process with intelligent resume screening
+          Join PIDE's team of talented professionals dedicated to advancing economic development and research excellence
         </Text>
 
         <TouchableOpacity
           style={styles.ctaButton}
-          onPress={() => navigation.navigate('Analyzer')}
+          onPress={() => navigation.navigate('Candidate')}
           activeOpacity={0.85}
         >
-          <Text style={styles.ctaButtonText}>Start Analyzing →</Text>
+          <Text style={styles.ctaButtonText}>🚀 Apply Now</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Stats Row */}
-      <View style={styles.statsRow}>
-        <View style={styles.statCard}>
-          <Text style={styles.statNumber}>✓</Text>
-          <Text style={styles.statLabel}>Accurate</Text>
-        </View>
-        <View style={[styles.statCard, styles.statCardMiddle]}>
-          <Text style={styles.statNumber}>⚡</Text>
-          <Text style={styles.statLabel}>Fast</Text>
-        </View>
-        <View style={styles.statCard}>
-          <Text style={styles.statNumber}>📊</Text>
-          <Text style={styles.statLabel}>Detailed</Text>
+      {/* About PIDE Section */}
+      <View style={styles.aboutSection}>
+        <Text style={styles.aboutTitle}>About PIDE</Text>
+        <Text style={styles.aboutText}>
+          The Pakistan Institute of Development Economics (PIDE) is Pakistan's premier independent research institute dedicated to advancing knowledge and policy expertise in economics and development. Since its establishment, PIDE has been at the forefront of economic research, policy analysis, and institutional development.
+        </Text>
+        
+        <Text style={styles.aboutSubheading}>Our Mission</Text>
+        <Text style={styles.aboutText}>
+          To conduct rigorous research, provide evidence-based policy advice, and develop human capital in economics and related fields to support Pakistan's sustainable development.
+        </Text>
+
+        <View style={styles.statsRow}>
+          <View style={styles.statBox}>
+            <Text style={styles.statIcon}>👥</Text>
+            <Text style={styles.statNumber}>500+</Text>
+            <Text style={styles.statLabel}>Alumni</Text>
+          </View>
+          <View style={styles.statBox}>
+            <Text style={styles.statIcon}>📚</Text>
+            <Text style={styles.statNumber}>50+</Text>
+            <Text style={styles.statLabel}>Research Projects</Text>
+          </View>
+          <View style={styles.statBox}>
+            <Text style={styles.statIcon}>🌟</Text>
+            <Text style={styles.statNumber}>20+</Text>
+            <Text style={styles.statLabel}>Years Excellence</Text>
+          </View>
         </View>
       </View>
 
-      {/* Features Section */}
+      {/* Portal Information Section */}
       <View style={styles.section}>
+        <Text style={styles.sectionTitle}>About This Portal</Text>
+        <Text style={styles.sectionSubtitle}>
+          Smart Resume Matching & Candidate Ranking System
+        </Text>
         <Text style={styles.sectionTitle}>How It Works</Text>
         <Text style={styles.sectionSubtitle}>
           Powered by Machine Learning to assist PIDE's recruitment team
@@ -120,103 +144,138 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: '#F8F9FA',
   },
-  hero: {
+  // Header with Logo
+  header: {
     backgroundColor: COLORS.primary,
-    paddingTop: SPACING.xxl,
-    paddingBottom: SPACING.xl,
+    paddingVertical: SPACING.lg,
     paddingHorizontal: SPACING.lg,
+    flexDirection: 'row',
     alignItems: 'center',
+    gap: SPACING.md,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0,0,0,0.1)',
   },
-  logoContainer: {
-    width: 72,
-    height: 72,
-    backgroundColor: 'rgba(255,255,255,0.15)',
-    borderRadius: BORDER_RADIUS.full,
+  logoBox: {
+    width: 48,
+    height: 48,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    borderRadius: BORDER_RADIUS.md,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: SPACING.md,
   },
-  logoIcon: {
-    fontSize: 36,
+  logoEmoji: {
+    fontSize: 28,
   },
-  orgName: {
-    fontSize: FONTS.sizes.xxl,
-    fontWeight: '800',
+  pideTitle: {
+    fontSize: FONTS.sizes.lg,
+    fontWeight: '900',
     color: COLORS.secondary,
-    letterSpacing: 4,
   },
-  orgFullName: {
-    fontSize: FONTS.sizes.sm,
+  pideSubtitle: {
+    fontSize: FONTS.sizes.xs,
     color: 'rgba(255,255,255,0.8)',
-    textAlign: 'center',
-    marginTop: 4,
-    letterSpacing: 0.5,
+    marginTop: -2,
   },
-  divider: {
-    width: 40,
-    height: 2,
-    backgroundColor: COLORS.accent,
-    marginVertical: SPACING.md,
-    borderRadius: BORDER_RADIUS.full,
+  // Hero Section
+  hero: {
+    backgroundColor: COLORS.primary,
+    paddingHorizontal: SPACING.lg,
+    paddingBottom: SPACING.xl,
+    alignItems: 'center',
   },
   heroTitle: {
     fontSize: FONTS.sizes.xxxl,
-    fontWeight: '700',
+    fontWeight: '800',
     color: COLORS.secondary,
     textAlign: 'center',
-    lineHeight: 40,
+    marginBottom: SPACING.sm,
   },
   heroSubtitle: {
     fontSize: FONTS.sizes.md,
-    color: 'rgba(255,255,255,0.85)',
+    color: 'rgba(255,255,255,0.9)',
     textAlign: 'center',
-    marginTop: SPACING.sm,
-    lineHeight: 22,
+    lineHeight: 24,
+    marginBottom: SPACING.lg,
     paddingHorizontal: SPACING.md,
   },
   ctaButton: {
-    backgroundColor: COLORS.accent,
+    backgroundColor: '#FFD700',
     paddingVertical: SPACING.md,
     paddingHorizontal: SPACING.xl,
     borderRadius: BORDER_RADIUS.full,
-    marginTop: SPACING.lg,
+    marginBottom: SPACING.xl,
   },
   ctaButtonText: {
-    color: '#1A1A1A',
-    fontSize: FONTS.sizes.md,
-    fontWeight: '700',
+    color: COLORS.primary,
+    fontSize: FONTS.sizes.lg,
+    fontWeight: '800',
     letterSpacing: 0.5,
   },
-  statsRow: {
-    flexDirection: 'row',
-    backgroundColor: COLORS.primaryDark,
-    paddingVertical: SPACING.lg,
-    paddingHorizontal: SPACING.md,
+  // About PIDE Section
+  aboutSection: {
+    backgroundColor: '#FFF',
+    paddingHorizontal: SPACING.lg,
+    paddingVertical: SPACING.xl,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E8E8E8',
   },
-  statCard: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  statCardMiddle: {
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderColor: 'rgba(255,255,255,0.2)',
-  },
-  statNumber: {
+  aboutTitle: {
     fontSize: FONTS.sizes.xxl,
     fontWeight: '800',
-    color: COLORS.accent,
+    color: COLORS.textPrimary,
+    marginBottom: SPACING.md,
+  },
+  aboutText: {
+    fontSize: FONTS.sizes.md,
+    color: COLORS.textSecondary,
+    lineHeight: 26,
+    marginBottom: SPACING.lg,
+  },
+  aboutSubheading: {
+    fontSize: FONTS.sizes.lg,
+    fontWeight: '700',
+    color: COLORS.textPrimary,
+    marginTop: SPACING.md,
+    marginBottom: SPACING.sm,
+  },
+  // Stats Row
+  statsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    gap: SPACING.md,
+    marginTop: SPACING.lg,
+  },
+  statBox: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+    borderRadius: BORDER_RADIUS.md,
+    padding: SPACING.md,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  statIcon: {
+    fontSize: 28,
+    marginBottom: SPACING.xs,
+  },
+  statNumber: {
+    fontSize: FONTS.sizes.lg,
+    fontWeight: '900',
+    color: COLORS.primary,
   },
   statLabel: {
     fontSize: FONTS.sizes.xs,
-    color: 'rgba(255,255,255,0.75)',
-    marginTop: 2,
+    color: COLORS.textMuted,
+    marginTop: SPACING.xs,
     textAlign: 'center',
   },
+  // Section
   section: {
     padding: SPACING.lg,
+    backgroundColor: '#FFF',
+    marginVertical: SPACING.md,
   },
   sectionTitle: {
     fontSize: FONTS.sizes.xl,
@@ -232,12 +291,14 @@ const styles = StyleSheet.create({
   },
   featureCard: {
     flexDirection: 'row',
-    backgroundColor: COLORS.surface,
+    backgroundColor: COLORS.background,
     borderRadius: BORDER_RADIUS.md,
     padding: SPACING.md,
     marginBottom: SPACING.md,
     alignItems: 'flex-start',
     ...SHADOW.small,
+    borderWidth: 1,
+    borderColor: COLORS.border,
   },
   featureIcon: {
     fontSize: 28,
@@ -260,8 +321,9 @@ const styles = StyleSheet.create({
   },
   bottomCta: {
     paddingHorizontal: SPACING.lg,
-    paddingBottom: SPACING.lg,
+    paddingVertical: SPACING.lg,
     gap: SPACING.sm,
+    backgroundColor: '#FFF',
   },
   primaryButton: {
     backgroundColor: COLORS.primary,
@@ -291,9 +353,10 @@ const styles = StyleSheet.create({
   footer: {
     padding: SPACING.lg,
     alignItems: 'center',
+    backgroundColor: COLORS.primary,
   },
   footerText: {
     fontSize: FONTS.sizes.xs,
-    color: COLORS.textMuted,
+    color: 'rgba(255,255,255,0.8)',
   },
 });
